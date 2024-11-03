@@ -13,29 +13,20 @@ import java.util.UUID;
 @Entity
 @Table(name = "user")
 public class UserEntity {
-	
+
+
 	@Id
-	@GeneratedValue(generator = "uuid")
-	@GenericGenerator(name = "uuid", strategy = "uuid2")
-	@Column(name = "id",unique = true)
-	private UUID id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", nullable = false)
+	private Integer id;
 	
 	@Column(name="username", nullable = false)
 	private String username;
 
-	@Column(name = "user_id")
-	private String userId;
-	
 	@Column(name="password", nullable = false)
 	@JsonIgnore
 	private String password;
-	
-	@Column(name="email_verified")
-	private boolean emailVerified;
-	
-	@Column(name="status")
-	private boolean status;
-	
+
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "role_fk", referencedColumnName = "id")
 	List<RoleEntity> roleList = new ArrayList<>();
