@@ -1,0 +1,19 @@
+package com.selisegroup.model;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import com.selisegroup.entity.RoleEntity;
+import lombok.Data;
+
+import java.util.List;
+import java.util.UUID;
+
+@Data
+public class UserModel {
+	private UUID id;
+	private String username;
+
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	private String password;
+	private List<RoleEntity> roleList;
+}

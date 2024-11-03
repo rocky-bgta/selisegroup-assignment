@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SelisegroupAssigenmentApplication {
+public class SelisegroupAssigmentApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SelisegroupAssigenmentApplication.class, args);
+		SpringApplication.run(SelisegroupAssigmentApplication.class, args);
 	}
 
 }
