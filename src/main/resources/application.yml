@@ -18,7 +18,11 @@ spring:
     database-platform: org.hibernate.dialect.MySQL8Dialect
     hibernate:
       ddl-auto: update
+    defer-datasource-initialization: true
   sql:
     init:
       data-locations: classpath:sql/user.sql,classpath:sql/role.sql, classpath:sql/bank_and_customer.sql
-      mode: never
+      mode: always
+  batch:
+    jdbc:
+      initialize-schema: always
