@@ -59,8 +59,7 @@ public class SecurityConfiguration {
                 .formLogin(AbstractHttpConfigurer::disable)
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers(new AntPathRequestMatcher("/api/accounts/**")).hasRole("ADMIN")
-                        .requestMatchers(new AntPathRequestMatcher("/normal-user")).hasAnyRole("ADMIN", "USER")
+                        .requestMatchers(new AntPathRequestMatcher("/api/accounts/")).hasRole("ADMIN")
                         .requestMatchers(
                                 new AntPathRequestMatcher("/get-access-token"),
                                 new AntPathRequestMatcher("/register"),

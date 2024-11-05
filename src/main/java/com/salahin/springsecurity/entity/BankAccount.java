@@ -1,6 +1,7 @@
 package com.salahin.springsecurity.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.salahin.springsecurity.constants.AccountStatus;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -20,6 +21,7 @@ public class BankAccount {
     private Integer accountId;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
