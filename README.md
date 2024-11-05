@@ -3,7 +3,7 @@
 - MySQL DB 
 - Maven 
 - Assume 8080 not accopied by some other application
-
+- Set MySQL DB username and password to application.yml file
 ## Maven Commands used in the course
 
 |     Maven Command       |     Description          |
