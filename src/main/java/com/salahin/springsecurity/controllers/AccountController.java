@@ -25,4 +25,11 @@ public class AccountController {
         bankAccountEntityList = bankAccountService.retrieveBankAccountByAccountNumber(accountNumber);
         return new ResponseEntity<>(bankAccountEntityList, HttpStatus.OK);
     }
+
+    @GetMapping("/get-all")
+    public ResponseEntity<?> getAccountAllAccountInfo() {
+        List<BankAccountEntity> bankAccountEntityList;
+        bankAccountEntityList = bankAccountService.retrieveAllBankAccountInfo();
+        return new ResponseEntity<>(bankAccountEntityList, HttpStatus.OK);
+    }
 }

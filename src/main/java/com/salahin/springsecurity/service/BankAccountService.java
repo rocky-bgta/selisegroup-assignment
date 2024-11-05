@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface BankAccountService {
     List<BankAccountEntity> retrieveBankAccountByAccountNumber(String accountNumber);
+    List<BankAccountEntity> retrieveAllBankAccountInfo();
 }

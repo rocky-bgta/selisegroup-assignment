@@ -24,4 +24,9 @@ public class BankAccountServiceImpl implements BankAccountService {
             return null;
         }
     }
+
+    @Override
+    public List<BankAccountEntity> retrieveAllBankAccountInfo() {
+        return bankAccountRepository.findAll();
+    }
 }

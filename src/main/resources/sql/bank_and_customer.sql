@@ -1,4 +1,6 @@
-/*-- Create the customer table
+-- Create the customer table
+/*
+
 CREATE TABLE customer
 (
     customer_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -20,7 +22,9 @@ CREATE TABLE bank_account
     created_at     TIMESTAMP                             DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (customer_id) REFERENCES customer (customer_id) ON DELETE SET NULL
 );
+
 */
+
 -- Insert sample data into the customer table
 INSERT INTO customer (name, email, phone, address)
 VALUES ('Alice Smith', 'alice@example.com', '123-456-7890', '123 Main St'),
