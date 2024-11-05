@@ -27,7 +27,6 @@ public class SecurityConfiguration {
     private final CustomJwtAuthenticationFilter customJwtAuthenticationFilter;
     private final CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
     private final CustomAccessDeniedHandler customAccessDeniedHandler;
-    //private final CustomCorsConfiguration customCorsConfiguration;
 
     public SecurityConfiguration(
             CustomUserDetailsService customUserDetailsService,
@@ -38,7 +37,6 @@ public class SecurityConfiguration {
         this.customJwtAuthenticationFilter = customJwtAuthenticationFilter;
         this.customAuthenticationEntryPoint = customAuthenticationEntryPoint;
         this.customAccessDeniedHandler = customAccessDeniedHandler;
-        //this.customCorsConfiguration = customCorsConfiguration;
     }
 
     @Bean
@@ -61,15 +59,12 @@ public class SecurityConfiguration {
                 .formLogin(AbstractHttpConfigurer::disable)
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers(new AntPathRequestMatcher("/admin-user")).hasRole("ADMIN")
+                        .requestMatchers(new AntPathRequestMatcher("/api/accounts/**")).hasRole("ADMIN")
                         .requestMatchers(new AntPathRequestMatcher("/normal-user")).hasAnyRole("ADMIN", "USER")
                         .requestMatchers(
-                                new AntPathRequestMatcher("/authenticate"),
+                                new AntPathRequestMatcher("/get-access-token"),
                                 new AntPathRequestMatcher("/register"),
-                                new AntPathRequestMatcher("/register-users"),
-                                new AntPathRequestMatcher("/authorization"),
-                                new AntPathRequestMatcher("/signing-out"),
-                                new AntPathRequestMatcher("/slack/**")
+                                new AntPathRequestMatcher("/signing-out")
                         ).permitAll()
                         .anyRequest().authenticated()
                 )

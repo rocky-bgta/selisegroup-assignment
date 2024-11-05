@@ -41,7 +41,7 @@ public class AuthenticationController {
         this.jwtTokenInfoService = jwtTokenInfoService;
     }
 
-    @PostMapping(value = "/get-token")
+    @PostMapping(value = "/get-access-token")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthRequest authRequest) throws Exception {
 
       //  UserModel userModel;

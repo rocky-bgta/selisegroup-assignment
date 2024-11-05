@@ -20,5 +20,5 @@ spring:
       ddl-auto: update
   sql:
     init:
-      data-locations: classpath:sql/user.sql,classpath:sql/role.sql
-      mode: embedded
+      data-locations: classpath:sql/user.sql,classpath:sql/role.sql, classpath:sql/bank_and_customer.sql
+      mode: never
