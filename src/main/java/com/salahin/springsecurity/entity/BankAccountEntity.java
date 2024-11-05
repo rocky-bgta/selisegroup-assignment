@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Data
 @Entity
 @Table(name = "bank_account")
-public class BankAccount {
+public class BankAccountEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +23,7 @@ public class BankAccount {
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonBackReference
     @JoinColumn(name = "customer_id")
-    private Customer customer;
+    private CustomerEntity customerEntity;
 
     @Column(name = "account_number", nullable = false, unique = true)
     private String accountNumber;

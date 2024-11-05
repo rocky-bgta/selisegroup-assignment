@@ -2,7 +2,7 @@ package com.salahin.springsecurity;
 
 import com.salahin.springsecurity.constants.AccountStatus;
 import com.salahin.springsecurity.controllers.AccountController;
-import com.salahin.springsecurity.entity.BankAccount;
+import com.salahin.springsecurity.entity.BankAccountEntity;
 import com.salahin.springsecurity.service.BankAccountService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -50,15 +50,15 @@ class AccountControllerTest {
     public void testGetAccountByAccountNumber_Success() throws Exception {
         // Arrange
         String accountNumber = "ACC1001";
-        BankAccount bankAccount = new BankAccount();
-        bankAccount.setAccountId(1);
-        bankAccount.setAccountNumber(accountNumber);
-        bankAccount.setBalance(BigDecimal.valueOf(1500.00));
-        bankAccount.setStatus(AccountStatus.ACTIVE);
+        BankAccountEntity bankAccountEntity = new BankAccountEntity();
+        bankAccountEntity.setAccountId(1);
+        bankAccountEntity.setAccountNumber(accountNumber);
+        bankAccountEntity.setBalance(BigDecimal.valueOf(1500.00));
+        bankAccountEntity.setStatus(AccountStatus.ACTIVE);
 
-        List<BankAccount> bankAccountList = Collections.singletonList(bankAccount);
+        List<BankAccountEntity> bankAccountEntityList = Collections.singletonList(bankAccountEntity);
 
-        when(bankAccountService.retrieveBankAccountByAccountNumber(accountNumber)).thenReturn(bankAccountList);
+        when(bankAccountService.retrieveBankAccountByAccountNumber(accountNumber)).thenReturn(bankAccountEntityList);
 
         // Act and Assert
         mockMvc.perform(get("/api/accounts/{accountNumber}", accountNumber)

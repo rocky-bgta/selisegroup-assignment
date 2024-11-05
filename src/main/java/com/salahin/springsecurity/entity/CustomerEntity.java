@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "customer")
-public class Customer {
+public class CustomerEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,9 +32,9 @@ public class Customer {
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "customerEntity", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
-    private List<BankAccount> bankAccounts;
+    private List<BankAccountEntity> bankAccountEntities;
 
     @PrePersist
     protected void onCreate() {

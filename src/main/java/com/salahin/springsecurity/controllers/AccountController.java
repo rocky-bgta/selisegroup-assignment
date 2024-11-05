@@ -1,7 +1,6 @@
 package com.salahin.springsecurity.controllers;
 
-import com.salahin.springsecurity.entity.BankAccount;
-import com.salahin.springsecurity.repository.BankAccountRepository;
+import com.salahin.springsecurity.entity.BankAccountEntity;
 import com.salahin.springsecurity.service.BankAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,8 +21,8 @@ public class AccountController {
 
     @GetMapping("/{accountNumber}")
     public ResponseEntity<?> getAccountByAccountNumber(@PathVariable String accountNumber) {
-        List<BankAccount> bankAccountList;
-        bankAccountList = bankAccountService.retrieveBankAccountByAccountNumber(accountNumber);
-        return new ResponseEntity<>(bankAccountList, HttpStatus.OK);
+        List<BankAccountEntity> bankAccountEntityList;
+        bankAccountEntityList = bankAccountService.retrieveBankAccountByAccountNumber(accountNumber);
+        return new ResponseEntity<>(bankAccountEntityList, HttpStatus.OK);
     }
 }

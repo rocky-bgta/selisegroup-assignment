@@ -1,6 +1,6 @@
 package com.salahin.springsecurity.service.impl;
 
-import com.salahin.springsecurity.entity.BankAccount;
+import com.salahin.springsecurity.entity.BankAccountEntity;
 import com.salahin.springsecurity.repository.BankAccountRepository;
 import com.salahin.springsecurity.service.BankAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ public class BankAccountServiceImpl implements BankAccountService {
     BankAccountRepository bankAccountRepository;
 
     @Override
-    public List<BankAccount> retrieveBankAccountByAccountNumber(String accountNumber) {
+    public List<BankAccountEntity> retrieveBankAccountByAccountNumber(String accountNumber) {
         if(!ObjectUtils.isEmpty(accountNumber)){
             return bankAccountRepository.findByAccountNumber(accountNumber);
         }else {
