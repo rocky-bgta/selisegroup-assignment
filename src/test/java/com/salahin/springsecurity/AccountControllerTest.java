@@ -17,6 +17,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -89,5 +90,39 @@ class AccountControllerTest {
         mockMvc.perform(get("/api/accounts/")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound());
+    }
+
+    @Test
+    public void testGetAccountAllAccountInfo_Success() throws Exception {
+        // Arrange
+        BankAccountEntity bankAccountEntity1 = new BankAccountEntity();
+        bankAccountEntity1.setAccountId(1);
+        bankAccountEntity1.setAccountNumber("ACC1001");
+        bankAccountEntity1.setBalance(BigDecimal.valueOf(1500.00));
+        bankAccountEntity1.setStatus(AccountStatus.ACTIVE);
+
+        BankAccountEntity bankAccountEntity2 = new BankAccountEntity();
+        bankAccountEntity2.setAccountId(2);
+        bankAccountEntity2.setAccountNumber("ACC1002");
+        bankAccountEntity2.setBalance(BigDecimal.valueOf(2500.00));
+        bankAccountEntity2.setStatus(AccountStatus.ACTIVE);
+
+        List<BankAccountEntity> bankAccountEntityList = Arrays.asList(bankAccountEntity1, bankAccountEntity2);
+
+        when(bankAccountService.retrieveAllBankAccountInfo()).thenReturn(bankAccountEntityList);
+
+        // Act and Assert
+        mockMvc.perform(get("/api/accounts/get-all")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(2)))
+                .andExpect(jsonPath("$[0].accountId", is(1)))
+                .andExpect(jsonPath("$[0].accountNumber", is("ACC1001")))
+                .andExpect(jsonPath("$[0].balance", is(1500.00)))
+                .andExpect(jsonPath("$[0].status", is("ACTIVE")))
+                .andExpect(jsonPath("$[1].accountId", is(2)))
+                .andExpect(jsonPath("$[1].accountNumber", is("ACC1002")))
+                .andExpect(jsonPath("$[1].balance", is(2500.00)))
+                .andExpect(jsonPath("$[1].status", is("ACTIVE")));
     }
 }
