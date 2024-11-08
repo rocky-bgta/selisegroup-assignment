@@ -20,7 +20,7 @@
 
 
 To call get-all user endpoint 
-    first we need a access token that have admin previlaage 
+    first we need a access token that have admin privilege 
 Execute the following curl:
 
 ```bash
@@ -53,7 +53,7 @@ curl --location 'http://localhost:8080/get-access-token' \
 
 we will get jwt token, and with this token we only execute
 curl --location 'http://localhost:8080/api/accounts/ACC1001' \
---header 'Authorization: Bearer <your-admin-token>'
+--header 'Authorization: Bearer <your-user-token>'
 
 but can not 'execute http://localhost:8080/api/accounts/get-all'
 
