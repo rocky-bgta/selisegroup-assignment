@@ -35,12 +35,12 @@ curl --location 'http://localhost:8080/get-access-token' \
 you will get jwt token and use that token to call following endpoint
 
 curl --location 'http://localhost:8080/api/accounts/get-all' \
---header 'Authorization: Bearer <your-admin-token>'
+--header 'Authorization: Bearer <your-jwt-token>'
 
 with this admin privilege token we access both end point that following as well
 
 curl --location 'http://localhost:8080/api/accounts/ACC1001' \
---header 'Authorization: Bearer <your-admin-token>'
+--header 'Authorization: Bearer <your-jwt-token>'
 
 
 In DB there is another user tahim by executing the following curl
@@ -53,7 +53,7 @@ curl --location 'http://localhost:8080/get-access-token' \
 
 we will get jwt token, and with this token we only execute
 curl --location 'http://localhost:8080/api/accounts/ACC1001' \
---header 'Authorization: Bearer <your-user-token>'
+--header 'Authorization: Bearer <your-jwt-token>'
 
 but can not 'execute http://localhost:8080/api/accounts/get-all'
 
