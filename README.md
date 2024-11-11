@@ -2,7 +2,7 @@
 - Java 8 or above
 - MySQL DB 
 - Maven 
-- Assume 8080 not occupied by some other application
+- Assume 8080 port not occupied by some other application
 - Set MySQL DB username and password to application.yml file
 ## Maven Commands used in the course
 
